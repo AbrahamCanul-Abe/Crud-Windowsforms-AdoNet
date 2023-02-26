@@ -35,7 +35,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
-            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxCategorias = new System.Windows.Forms.ComboBox();
@@ -101,13 +100,6 @@
             this.txtPrecio.Size = new System.Drawing.Size(143, 20);
             this.txtPrecio.TabIndex = 6;
             // 
-            // txtCategoria
-            // 
-            this.txtCategoria.Location = new System.Drawing.Point(174, 229);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(143, 20);
-            this.txtCategoria.TabIndex = 7;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(143, 300);
@@ -133,10 +125,11 @@
             // cbxCategorias
             // 
             this.cbxCategorias.FormattingEnabled = true;
-            this.cbxCategorias.Location = new System.Drawing.Point(174, 256);
+            this.cbxCategorias.Location = new System.Drawing.Point(174, 229);
             this.cbxCategorias.Name = "cbxCategorias";
-            this.cbxCategorias.Size = new System.Drawing.Size(121, 21);
+            this.cbxCategorias.Size = new System.Drawing.Size(143, 21);
             this.cbxCategorias.TabIndex = 10;
+            this.cbxCategorias.Text = "Categorias";
             this.cbxCategorias.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // FrmNuevo
@@ -147,7 +140,6 @@
             this.Controls.Add(this.cbxCategorias);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.txtCategoria);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNombre);
@@ -173,7 +165,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtPrecio;
-        private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbxCategorias;

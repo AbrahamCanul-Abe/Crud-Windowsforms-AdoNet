@@ -59,11 +59,12 @@ namespace Crud_Windowsforms_AdoNet
             {
                 if(Id == null)
                 {
-                    oProductosDB.Add(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), int.Parse(txtCategoria.Text));
+                    int indice = cbxCategorias.SelectedIndex;
+                    oProductosDB.Add(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), (int)(cbxCategorias.SelectedIndex));
                 }
                 else
                 {
-                    oProductosDB.Update(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), int.Parse(txtCategoria.Text), (int)Id);
+                    oProductosDB.Update(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), (int)(cbxCategorias.SelectedIndex), (int)Id);
                 }
                 this.Close();
             }
