@@ -34,7 +34,7 @@ namespace Crud_Windowsforms_AdoNet
             txtNombre.Text = oProductos.Nombre;
             txtDescripcion.Text = oProductos.Descripcion;
             txtPrecio.Text = oProductos.Precio.ToString();
-            txtCategoria.Text = oProductos.CategoriaId.ToString();
+            //txtCategoria.Text = oProductos.CategoriaId.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
