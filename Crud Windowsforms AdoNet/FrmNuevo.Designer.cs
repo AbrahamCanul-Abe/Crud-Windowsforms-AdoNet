@@ -38,6 +38,7 @@
             this.txtCategoria = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbxCategorias = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -129,11 +130,21 @@
             this.label5.Text = "Agregar Productos";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // cbxCategorias
+            // 
+            this.cbxCategorias.FormattingEnabled = true;
+            this.cbxCategorias.Location = new System.Drawing.Point(174, 256);
+            this.cbxCategorias.Name = "cbxCategorias";
+            this.cbxCategorias.Size = new System.Drawing.Size(121, 21);
+            this.cbxCategorias.TabIndex = 10;
+            this.cbxCategorias.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // FrmNuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(395, 353);
+            this.Controls.Add(this.cbxCategorias);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtCategoria);
@@ -147,6 +158,7 @@
             this.Name = "FrmNuevo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmNuevo";
+            this.Load += new System.EventHandler(this.FrmNuevo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -164,5 +176,6 @@
         private System.Windows.Forms.TextBox txtCategoria;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbxCategorias;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace Crud_Windowsforms_AdoNet
 {
     public partial class FrmNuevo : Form
     {
+        private string connectionString
+            = "Data Source=LENO\\SQLEXPRESS2;Initial Catalog=ControlVentas;" +
+            "User=sa;Password=developer";
         private int? Id;
         public FrmNuevo(int? Id=null)
         {
@@ -72,6 +76,26 @@ namespace Crud_Windowsforms_AdoNet
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmNuevo_Load(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand comando = new SqlCommand("select nombre from categorias", connection);
+                connection.Open();
+                SqlDataReader registro = comando.ExecuteReader();
+                while (registro.Read())
+                {
+                    cbxCategorias.Items.Add(registro["Nombre"].ToString());
+                }
+                connection.Close();
+            }
         }
     }
 }
