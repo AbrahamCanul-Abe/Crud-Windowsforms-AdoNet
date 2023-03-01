@@ -54,17 +54,19 @@ namespace Crud_Windowsforms_AdoNet
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int cbxCategoria = cbxCategorias.SelectedIndex;
+
             ProductosDB oProductosDB = new ProductosDB();
             try
             {
                 if(Id == null)
                 {
                     int indice = cbxCategorias.SelectedIndex;
-                    oProductosDB.Add(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), (int)(cbxCategorias.SelectedIndex));
+                    oProductosDB.Add(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), (cbxCategoria));
                 }
                 else
                 {
-                    oProductosDB.Update(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), (int)(cbxCategorias.SelectedIndex), (int)Id);
+                    oProductosDB.Update(txtNombre.Text, txtDescripcion.Text, decimal.Parse(txtPrecio.Text), (cbxCategoria), (int)Id);
                 }
                 this.Close();
             }
