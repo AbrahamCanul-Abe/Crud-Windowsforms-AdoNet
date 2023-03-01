@@ -21,6 +21,7 @@ namespace ControlVentasCore.Entity
             public const string CategoriaId = "CategoriaId";
         }
         #endregion
+
         #region Properties
         public int Id { get; set; }
         public string Nombre { get; set; }
