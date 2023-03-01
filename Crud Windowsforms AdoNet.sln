@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crud Windowsforms AdoNet", "Crud Windowsforms AdoNet\Crud Windowsforms AdoNet.csproj", "{F920A458-300A-48E8-957F-8CD7D50E4845}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlVentas", "Crud Windowsforms AdoNet\ControlVentas.csproj", "{F920A458-300A-48E8-957F-8CD7D50E4845}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlVentasCore", "ControlVentasCore\ControlVentasCore.csproj", "{0736A7B7-A5EA-4AED-919F-D4E1FE911F60}"
 EndProject
