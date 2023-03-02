@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\ProductoBAL.cs" />
     <Compile Include="Data\ProductoDAL.cs" />
     <Compile Include="Entity\ProductoInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
