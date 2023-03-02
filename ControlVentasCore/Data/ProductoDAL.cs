@@ -1,6 +1,7 @@
 ﻿using ControlVentasCore.Entity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -78,7 +79,7 @@ namespace ControlVentasCore.Data
             sb.Append($",'{ProductoInfo.Precio}'");
             sb.Append($",'{ProductoInfo.CategoriaId}'");
             sb.AppendLine(")");
-            sb.AppendLine("select SCOPE_IDENTITY");
+            sb.AppendLine("select SCOPE_IDENTITY()");
 
             object Id = Utilerias.SQLHelper.ExecuteScalar(sb.ToString(), ConnectionString);
             if (Id == null) return 0;
@@ -114,6 +115,9 @@ namespace ControlVentasCore.Data
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"delete {TableName}");
             sb.Append($" where {Entity.ProductoInfo.FieldName.Id} = {Id}");
+
+            Utilerias.SQLHelper.ExecuteNonQuery(sb.ToString(), ConnectionString);
+            return Id;
         }
 
         /// <summary>
@@ -121,9 +125,34 @@ namespace ControlVentasCore.Data
         /// </summary>
         /// <param name="Producto"></param>
         /// <returns></returns>
-        public List<Entity.ProductoInfo> GetEntityObjects(Entity.ProductoInfo Producto)
+        public List<Entity.ProductoInfo> FindBy(Entity.ProductoInfo Producto)
         {
+            string Filter = string.Empty;
 
+            //generamos un nuevo objeto para poder comparar y detectar variaciones
+            Entity.ProductoInfo nProducto = new Entity.ProductoInfo();
+            if (string.Compare(Producto.Nombre, nProducto.Nombre, true) != 0)
+                Filter += $" and {Entity.ProductoInfo.FieldName.Nombre} = '{Producto.Nombre}'";
+            if (string.Compare(Producto.Descripcion, nProducto.Descripcion, true) != 0)
+                Filter += $" and {Entity.ProductoInfo.FieldName.Descripcion} = '{Producto.Descripcion}'";
+            if (Producto.Precio == nProducto.Precio)
+                Filter += $" and {Entity.ProductoInfo.FieldName.Precio} = '{Producto.Precio}'";
+            if (Producto.CategoriaId == nProducto.CategoriaId)
+                Filter += $" and {Entity.ProductoInfo.FieldName.CategoriaId} = '{Producto.CategoriaId}'";
+            
+            // generamos una sentencia sql con el filtro dinamico...
+            string sql = $"select * from {TableName} where {Entity.ProductoInfo.FieldName.Id} > 0 " + Filter;
+
+            DataTable dt = Utilerias.SQLHelper.ExecuteDatatable(sql, ConnectionString);
+
+            if (dt == null || dt.Rows.Count == 0) return null;
+
+            //generamos un ciclo por cada registro que devolvio la consulta y llenamos la lista
+            List<Entity.ProductoInfo> ProductosInfo = new List<Entity.ProductoInfo>();
+            foreach (DataRow Row in dt.Rows)
+                ProductosInfo.Add(GetEntityObject(Row));
+            
+            return ProductosInfo;
         }
         #endregion
     }
