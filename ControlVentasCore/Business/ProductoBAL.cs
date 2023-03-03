@@ -67,6 +67,12 @@ namespace ControlVentasCore.Business
             else
                 return ProductoDAL.Update(ProductoInfo);
         }
+
+        public bool Delete(int Id)
+        {
+            ProductoDAL.Delete(Id);
+            return true;
+        }
         #endregion
     }
 }
